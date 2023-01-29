@@ -47,21 +47,21 @@ function Profils() {
 
   useEffect(() => {
     async function fetchProfils() {
-      setDataLoading(true);
       try {
         const response = await fetch(
-          `https://jsonplaceholder.typicode.com/users`
+          `http://jsonplaceholder.typicode.com/users`
         );
-        const { profilContact } = await response.json();
+        const profilContact = await response.json();
         setProfilContact(profilContact);
+        setDataLoading(true);
+        return true 
       } catch (error) {
         console.log(error);
-      } finally {
-        setDataLoading(false);
       }
     }
     fetchProfils();
   }, []);
+
   return (
     <ProfilsContainer>
       <TopTextProfils>Profils des contacts.</TopTextProfils>
@@ -69,21 +69,23 @@ function Profils() {
         Faites le parcours de tous les contacts de Mokili event.
       </ProfilsSubtitle>
 
-      {isDataLoading ? (
+      {!isDataLoading ? (
         <LoaderWrapper>
           <Loader />
         </LoaderWrapper>
       ) : (
         <CardContainer>
           {profilContact.map((profile, index) => {
-            <Card
+            return(
+              <Card
               key={`${profile.id}-${index}`}
               name={profile.name}
               email={profile.email}
               picture={DefaultPicture}
               adress={profile.adress}
               phone={profile.phone}
-            />;
+            />
+            )
           })}
         </CardContainer>
       )}
