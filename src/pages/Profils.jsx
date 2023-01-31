@@ -28,13 +28,13 @@ const ProfilsSubtitle = styled.h2`
 `;
 const CardContainer = styled.div`
   font-family: lato;
- /*  display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 grip-template-rows: 350px 350px;
   grid-template-columns: repeat(2, 1fr); 
-  gap: 24px; */
+  gap: 24px;
 `;
 const LoaderWrapper = styled.div`
   display: flex;
@@ -84,13 +84,19 @@ function Profils() {
     async function fetchProfils() {
       try {
         const response = await fetch(
-          `https://jsonplaceholder.typicode.com/users`
+          `http://jsonplaceholder.typicode.com/users`
         );
         const profilContact = await response.json();
+<<<<<<< HEAD
         console.log(profilContact);
         setProfilContact(profilContact);
         setDataLoading(true);
         return true;
+=======
+        setProfilContact(profilContact);
+        setDataLoading(true);
+        return true 
+>>>>>>> cae8dae14ccd5e6d5d53dc5c153c0e1a82aa0707
       } catch (error) {
         console.log(error);
       }
@@ -117,6 +123,7 @@ function Profils() {
       ) : (
         <CardContainer>
           {profilContact.map((profile, index) => {
+<<<<<<< HEAD
             return (
               <Card
                 key={`${profile.name}-${index}`}
@@ -127,6 +134,18 @@ function Profils() {
                 phone={profile.phone}
               />
             );
+=======
+            return(
+              <Card
+              key={`${profile.id}-${index}`}
+              name={profile.name}
+              email={profile.email}
+              picture={DefaultPicture}
+              adress={profile.adress}
+              phone={profile.phone}
+            />
+            )
+>>>>>>> cae8dae14ccd5e6d5d53dc5c153c0e1a82aa0707
           })}
         </CardContainer>
       )}
