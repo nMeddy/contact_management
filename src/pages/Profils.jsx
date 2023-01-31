@@ -3,7 +3,7 @@ import styled from "styled-components";
 import colors from "../Styles/Colors";
 import { Loader } from "../Styles/Customers";
 import Card from "../components/Card/Card";
-import DefaultPicture from "../assets/MokiliEvent.png";
+import DefaultPicture from "../assets/profile.png";
 
 const ProfilsContainer = styled.div`
   display: flex;
@@ -28,17 +28,52 @@ const ProfilsSubtitle = styled.h2`
 `;
 const CardContainer = styled.div`
   font-family: lato;
-  display: flex;
-  flex-direction: column;
+ /*  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  grip-template-rows: 350px 350px;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 24px;
+grip-template-rows: 350px 350px;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 24px; */
 `;
 const LoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const ButtonContainer = styled.div`
+  width: 50%;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+`;
+
+const DeleteContactBtn = styled.button`
+  padding: 20px;
+  width: 220px;
+  background-color: ${colors.danger};
+  color: ${colors.white};
+  border-radius: 5rem;
+  border: none;
+  cursor: pointer;
+`;
+const AddContactBtn = styled.button`
+  padding: 20px;
+  width: 220px;
+  background-color: ${colors.success};
+  color: ${colors.white};
+  border-radius: 5rem;
+  border: none;
+  cursor: pointer;
+`;
+const UpDateContactBtn = styled.button`
+  padding: 20px;
+  width: 220px;
+  background-color: ${colors.warning};
+  color: ${colors.white};
+  border-radius: 5rem;
+  border: none;
+  cursor: pointer;
 `;
 
 function Profils() {
@@ -47,43 +82,51 @@ function Profils() {
 
   useEffect(() => {
     async function fetchProfils() {
-      setDataLoading(true);
       try {
         const response = await fetch(
           `https://jsonplaceholder.typicode.com/users`
         );
-        const { profilContact } = await response.json();
+        const profilContact = await response.json();
+        console.log(profilContact);
         setProfilContact(profilContact);
+        setDataLoading(true);
+        return true;
       } catch (error) {
         console.log(error);
-      } finally {
-        setDataLoading(false);
       }
     }
     fetchProfils();
   }, []);
+
   return (
     <ProfilsContainer>
       <TopTextProfils>Profils des contacts.</TopTextProfils>
       <ProfilsSubtitle>
         Faites le parcours de tous les contacts de Mokili event.
       </ProfilsSubtitle>
+      <ButtonContainer>
+        <AddContactBtn>Ajouter un contact</AddContactBtn>
+        <DeleteContactBtn>Supprimer un contact</DeleteContactBtn>
+        <UpDateContactBtn>Modifier un contact</UpDateContactBtn>
+      </ButtonContainer>
 
-      {isDataLoading ? (
+      {!isDataLoading ? (
         <LoaderWrapper>
           <Loader />
         </LoaderWrapper>
       ) : (
         <CardContainer>
           {profilContact.map((profile, index) => {
-            <Card
-              key={`${profile.id}-${index}`}
-              name={profile.name}
-              email={profile.email}
-              picture={DefaultPicture}
-              adress={profile.adress}
-              phone={profile.phone}
-            />;
+            return (
+              <Card
+                key={`${profile.name}-${index}`}
+                name={profile.name}
+                email={profile.email}
+                picture={DefaultPicture}
+                adress={profile.adress}
+                phone={profile.phone}
+              />
+            );
           })}
         </CardContainer>
       )}

@@ -21,9 +21,11 @@ const CardWrapper = styled.div`
   }
 `;
 const CardLabel = styled.span`
-  color: #5883e4;
-  font-size: 22px;
-  font-weight: bold;
+  color: ${colors.primary};
+  font-size: 25px;
+  padding: 15px;
+  font-family: roboto;
+  font-weight: 400;
 `;
 const CardImg = styled.img`
   height: 80px;
@@ -32,12 +34,14 @@ const CardImg = styled.img`
 `;
 const CardTitle = styled.span`
   color: black;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: normal;
   align-self: center;
+  font-family: roboto;
+  font-weight: lighter;
 `;
 
-function Card({ name, email, picture, adress, phone}) {
+function Card({ name, email, picture, adress, phone }) {
   return (
     <CardWrapper>
       <CardLabel>{name}</CardLabel>
