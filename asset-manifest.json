@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/contact_management/index/static/js/main.34e4275d.js",
-    "static/media/ErrorPage.jpeg": "/contact_management/index/static/media/ErrorPage.ce293654fc5b055593cf.jpeg",
-    "static/media/MokiliEvent.png": "/contact_management/index/static/media/MokiliEvent.7057fed2a807fd79549f.png",
-    "static/media/devProfile.png": "/contact_management/index/static/media/devProfile.dce52142d5a835f61fc2.png",
-    "static/media/profile.png": "/contact_management/index/static/media/profile.ebf31840ff6efcab101b.png",
-    "static/media/modify.png": "/contact_management/index/static/media/modify.259474e4d17c95561cc4.png",
-    "static/media/register.png": "/contact_management/index/static/media/register.a69ce9598480a431ffff.png",
-    "index.html": "/contact_management/index/index.html",
-    "main.34e4275d.js.map": "/contact_management/index/static/js/main.34e4275d.js.map"
+    "main.js": "/contact_management/static/js/main.50003de9.js",
+    "static/media/ErrorPage.jpeg": "/contact_management/static/media/ErrorPage.ce293654fc5b055593cf.jpeg",
+    "static/media/MokiliEvent.png": "/contact_management/static/media/MokiliEvent.7057fed2a807fd79549f.png",
+    "static/media/devProfile.png": "/contact_management/static/media/devProfile.dce52142d5a835f61fc2.png",
+    "static/media/profile.png": "/contact_management/static/media/profile.ebf31840ff6efcab101b.png",
+    "static/media/modify.png": "/contact_management/static/media/modify.259474e4d17c95561cc4.png",
+    "static/media/register.png": "/contact_management/static/media/register.a69ce9598480a431ffff.png",
+    "index.html": "/contact_management/index.html",
+    "main.50003de9.js.map": "/contact_management/static/js/main.50003de9.js.map"
   },
   "entrypoints": [
-    "static/js/main.34e4275d.js"
+    "static/js/main.50003de9.js"
   ]
 }
