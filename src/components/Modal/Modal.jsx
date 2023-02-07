@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import Register from "../../assets/register.png";
 import Delete from "../../assets/modify.png";
 import styled from "styled-components";
 import colors from "../../Styles/Colors";
+
 
 const ModalMain = styled.div`
   display: flex;
@@ -56,8 +57,8 @@ const Modaltext = styled.span`
 `;
 const ModaltextDanger = styled.span`
   font-size: 14px;
-  font-style:italic;
-  color:${colors.danger};
+  font-style: italic;
+  color: ${colors.danger};
 `;
 const ModalFormContainer = styled.div`
   display: flex;
@@ -67,7 +68,7 @@ const ModalForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items:center;
+  align-items: center;
   gap: 5vh;
   font-family: roboto;
 `;
@@ -127,7 +128,12 @@ const SubmitModal = styled.input`
 //.......... Modal function ........
 
 function Modal({ openModal, setOpenModal }) {
-  const {
+
+    const [contactName, SetContactName] = useState(``)
+    const [contactEmail, setContactEmail] = useState(``)
+    const [contactTelephone, setContactTelephone] = useState(``)
+
+    const {
     register,
     handleSubmit,
     formState: { errors },
@@ -169,32 +175,34 @@ function Modal({ openModal, setOpenModal }) {
       <ModalFormContainer>
         <ModalForm
           onSubmit={handleSubmit((data) => {
-            alert(data);
+            console.log(data);
           })}
         >
           <ModalInput
             type="text"
             placeholder="Entrez le nom au complet du contact"
+            autoComplete="off"
             {...register("nom", { required: `Renseignez ce champs !` })}
           />
           <ModaltextDanger>{errors.nom?.message}</ModaltextDanger>
           <ModalInput
             type="mail"
             placeholder="Entrez l'adresse mail du contact"
+            autoComplete="off"
             {...register("mail", { required: `Renseignez ce champs !` })}
           />
           <ModaltextDanger>{errors.mail?.message}</ModaltextDanger>
           <ModalInput
             type="phone"
             placeholder="Entrez le numéro de téléphone"
+            autoComplete="off"
             {...register("telephone", { required: `Renseignez ce champs !` })}
-            />
-            <ModaltextDanger>{errors.telephone?.message}</ModaltextDanger>
-            <SubmitModal type="submit"/>
+          />
+          <ModaltextDanger>{errors.telephone?.message}</ModaltextDanger>
+          <SubmitModal type="submit" />
         </ModalForm>
       </ModalFormContainer>
-      <ModalFooterButton>
-      </ModalFooterButton>
+      <ModalFooterButton></ModalFooterButton>
     </ModalMain>
   );
 }
