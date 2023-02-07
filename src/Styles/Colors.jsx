@@ -4,7 +4,7 @@ const colors = {
   backgroundLight:`white-smoke`,
   danger: `red`,
   warning: `chocolate`,
-  success: `green`
+  success: `green`,
 };
 
 export default colors;

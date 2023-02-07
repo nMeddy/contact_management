@@ -28,9 +28,7 @@ const CardLabel = styled.span`
   font-weight: 400;
 `;
 const CardImg = styled.img`
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
+  max-width: 80px;
 `;
 const CardTitle = styled.span`
   color: black;
